@@ -1,0 +1,23 @@
+
+TempSensor
+----------
+This is a simple live plotting code for XBee. The hardware setup includes two XBees and a temp sensor connected to the end device's ADC. NO ARDUINOS OR OTHER CONTROLLERS
+
+The transmission although AT in nature, the data packets are in the API I/O frame format. We use the xbee-python library for ease in the data parsing.
+
+Source for xbee-python : http://code.google.com/p/python-xbee/
+
+Using monitor.py, a client computer with the other XBee connected can plot the temperature data transmitted by the Router AT wirelessly.
+
+You need:
+ - PyQt
+ - PyQwt
+ - PySerial
+
+Python modules for this to work correctly.
+
+Note that the serial port is hardcoded in SerialMonitor.py, change it to fit your needs. (USE: 'dmesg|tail' on Linux to know what the serial port is, just after connecting your XBee device). Other things hardcoded in this file is the conversion of ADC data to temperature value using a Look Up Table. The temperature measurement in query is a thermistor hence the setup. If you have a LM35 you just need to map the voltage to the temperature value instead of going through the entire process. I have marked the part which is special to my need in the code.
+
+The Plotter application is a simplified/modified version of Eli Bendersky's
+plotter:
+    http://eli.thegreenplace.net/2009/08/07/a-live-data-monitor-with-python-pyqt-and-pyserial/
