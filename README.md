@@ -1,7 +1,8 @@
-Arduino-Sketches
-================
+ Python-Arduino-Hardware-Hacks
+===============================
 
-A Compilation of some special Arduino sketches. Will include occasional Python Integration.
+A Compilation of some special Hardware Hacks. This will include XBee, Arduino hacks based on Python. Some special sketches
+will also be uploaded
 
 Some of my most common work will include :
 
