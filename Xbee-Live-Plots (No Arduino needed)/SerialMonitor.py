@@ -9,7 +9,9 @@ import serial
 import dict_lut
 
 ADC_RESOLUTION = 1024.00
-RESISTANCE = 47.00
+RESISTANCE = 7.990
+BAUD_RATE = 9600
+PORT = '/dev/ttyACM0'
 
 class SerialMonitorThread(threading.Thread):
     """ A thread for monitoring a serial port. The serial port is
@@ -42,7 +44,7 @@ class SerialMonitorThread(threading.Thread):
             if self.serial_port:
                 self.serial_port.close()
             # Port hardcoded :)
-            self.serial_port = serial.Serial("/dev/ttyACM0", 9600)
+            self.serial_port = serial.Serial(PORT, BAUD_RATE)
         except serial.SerialException, e:
             self.error_q.put(e.message)
             return
@@ -66,8 +68,8 @@ class SerialMonitorThread(threading.Thread):
 			adc_value = sample['adc-0']
 			#Changing ADC value to Resistance and subsequent mapping of Resistance to Temperature in the next three steps 
 			# FIXME: Change for your specific use, this works fine for my use just used the highlighter to point this fact
-			temp_value = ADC_RESOLUTION/adc_value -1
-			thermistor_value = RESISTANCE/temp_value
+			temp_value = ADC_RESOLUTION/adc_value - 1
+			thermistor_value = (RESISTANCE/temp_value) + 0.24
 			temperature_value = dict_lut.closest_match(thermistor_value)
 			#Add Time stamp here:
 			timestamp = time.clock()

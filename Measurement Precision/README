@@ -1,3 +1,0 @@
-This skectch has a Precision function.
-
-This function gives precise aithemtic values upto a maximum of 8 decimals, with the upper bound being the register size for flaot types. (IEEE format)
