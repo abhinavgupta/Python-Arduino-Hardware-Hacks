@@ -1,0 +1,9 @@
+Python Serial Terminal
+======================
+
+
+This folder consists of two Python scripts that perform like Cutecom -  Serial Communication Terminal
+
+Baud Rate and Serial Port are hard coded and can be changed easily in the script.
+
+REQUIREMENTS: PySerial library
